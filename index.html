@@ -5,11 +5,46 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pattath Dental Clinic — Website Concept by Webora</title>
 <meta name="description" content="Website concept preview for Pattath Dental Clinic, Tattamangalam, Palakkad.">
+<meta name="theme-color" content="#0B2A57">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://images.unsplash.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<!-- ============ LAUNCH SCREEN ============ -->
+<div class="launch-screen" id="launchScreen">
+  <div class="launch-bg" aria-hidden="true">
+    <div class="launch-glow"></div>
+    <svg class="launch-tooth" viewBox="0 0 100 120" aria-hidden="true">
+      <path d="M50 6C33 6 20 16 20 34c0 14 4 24 7 40 2 12 4 24 11 40 2 5 8 5 10 0 5-13 6-24 8-34 1-6 2-6 3 0 2 10 3 21 8 34 2 5 8 5 10 0 7-16 9-28 11-40 3-16 7-26 7-40C95 16 82 6 65 6 59 6 54 8 50 11 46 8 41 6 50 6z"/>
+    </svg>
+    <span class="spark s1"></span>
+    <span class="spark s2"></span>
+    <span class="spark s3"></span>
+    <span class="spark s4"></span>
+    <span class="spark s5"></span>
+    <span class="spark s6"></span>
+  </div>
+  <div class="launch-content">
+    <img src="assets/logo-icon.png" alt="" class="launch-logo">
+    <p class="launch-quote" id="launchQuote">A confident smile opens more doors than words ever could.</p>
+    <span class="launch-brand">Pattath Dental Clinic</span>
+    <button class="launch-skip" id="launchSkip">Enter Site</button>
+  </div>
+</div>
+<script>
+  /* Inline + synchronous: skip the launch screen instantly on repeat
+     visits within the same tab session, before first paint. */
+  if (sessionStorage.getItem('pattathLaunchSeen')) {
+    document.getElementById('launchScreen').classList.add('skip');
+  } else {
+    document.documentElement.classList.add('launch-lock');
+  }
+</script>
 
 <div class="concept-tag" aria-hidden="true">Website Concept / Preview</div>
 
@@ -17,7 +52,7 @@
 <header class="navbar" id="navbar">
   <div class="nav-inner">
     <a href="#home" class="brand">
-      <span class="brand-mark">PD</span>
+      <img src="assets/logo-icon.png" alt="Pattath Dental Clinic logo" class="brand-mark">
       <span class="brand-text">Pattath <em>Dental Clinic</em></span>
     </a>
 
@@ -25,9 +60,9 @@
       <a href="#home" class="nav-link">Home</a>
       <a href="#about" class="nav-link">About</a>
       <a href="#treatments" class="nav-link">Treatments</a>
-      <a href="#doctor" class="nav-link">Doctor</a>
-      <a href="#contact" class="nav-link">Contact</a>
-      <a href="tel:+918547882034" class="nav-cta">Call Clinic</a>
+      <a href="#doctor" class="nav-link">Doctors</a>
+      <a href="#contact" class="nav-link">Connect</a>
+      <a href="https://wa.me/919495982034?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20Pattath%20Dental%20Clinic." class="nav-cta" target="_blank" rel="noopener">Message on WhatsApp</a>
     </nav>
 
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
@@ -45,16 +80,17 @@
       <h1>Confident smiles,<br> crafted with care.</h1>
       <p class="hero-sub">
         Pattath Dental Clinic offers thoughtful, modern dental care in Tattamangalam —
-        led by Dr. Vishnu S. Pattath, Prosthodontist. Clear guidance, comfortable
-        treatment, and a team that listens.
+        led by Prosthodontists Dr. Vishnu S. Pattath and Dr. Shani J. Nair. Clear
+        guidance, comfortable treatment, and a team that listens.
       </p>
       <div class="hero-actions">
-        <button class="btn btn-primary" data-open-modal>
-          Book an Appointment
-        </button>
-        <a href="tel:+918547882034" class="btn btn-outline">
+        <a href="tel:+919495982034" class="btn btn-primary">
           <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg>
-          Call Clinic
+          Call Now
+        </a>
+        <a href="https://wa.me/919495982034?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20Pattath%20Dental%20Clinic." class="btn btn-outline" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.8-1.5c1.5.8 3.3 1.3 5.2 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.1c-1.7 0-3.3-.5-4.7-1.3l-.3-.2-3.2 1 1-3.1-.2-.3C3.7 14.7 3.2 13.4 3.2 12c0-4.8 3.9-8.8 8.8-8.8s8.8 3.9 8.8 8.8-4 8.9-8.8 8.9zm4.8-6.6c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.7.8-.8 1-.2.2-.3.2-.5.1-.3-.1-1.2-.4-2.2-1.4-.8-.7-1.4-1.6-1.5-1.9-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.4 0-.5-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1s1 2.5 1.1 2.6c.1.2 2 3 4.7 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.2-1.2-.1-.2-.3-.2-.6-.4z"/></svg>
+          WhatsApp Us
         </a>
       </div>
     </div>
@@ -68,8 +104,8 @@
         >
       </div>
       <div class="floating-card card-one">
-        <span class="fc-title">Prosthodontist</span>
-        <span class="fc-sub">Dr. Vishnu S. Pattath</span>
+        <span class="fc-title">Expert Prosthodontists</span>
+        <span class="fc-sub">13–15 Years Experience</span>
       </div>
       <div class="floating-card card-two">
         <span class="fc-title">Tattamangalam</span>
@@ -196,29 +232,37 @@
   </div>
 </section>
 
-<!-- ============ DOCTOR ============ -->
-<section class="doctor" id="doctor">
-  <div class="section-inner doctor-grid">
-    <div class="doctor-visual reveal">
-      <div class="doctor-frame">
-        <div class="doctor-placeholder">
-          <svg viewBox="0 0 24 24" class="ph-icon"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4.4 0-8 2.2-8 5v2h16v-2c0-2.8-3.6-5-8-5z"/></svg>
-          <span>Doctor Profile Image</span>
+<!-- ============ DOCTORS ============ -->
+<section class="doctors" id="doctor">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">Meet Your Dentists</span>
+      <h2>The team behind your smile</h2>
+    </div>
+
+    <div class="doctors-grid">
+      <div class="doctor-card reveal">
+        <div class="doctor-photo">
+          <img src="assets/doctor-vishnu.jpg" alt="Dr. Vishnu S. Pattath" loading="lazy">
+        </div>
+        <div class="doctor-info">
+          <h3>Dr. Vishnu S. Pattath</h3>
+          <span class="doctor-qual">BDS, MDS</span>
+          <span class="doctor-role">Prosthodontist &amp; Implantologist</span>
+          <span class="doctor-exp">13 Years Experience</span>
         </div>
       </div>
-    </div>
-    <div class="doctor-copy reveal">
-      <span class="section-eyebrow">Meet Your Dentist</span>
-      <h2>Dr. Vishnu S. Pattath</h2>
-      <span class="doctor-role">Prosthodontist</span>
-      <p>
-        Dr. Vishnu S. Pattath leads Pattath Dental Clinic with a focus on
-        prosthodontic care — helping patients restore function and confidence
-        in their smile through careful, considered treatment.
-      </p>
-      <div class="doctor-tags">
-        <span>Prosthodontist</span>
-        <span>Pattath Dental Clinic</span>
+
+      <div class="doctor-card reveal">
+        <div class="doctor-photo">
+          <img src="assets/doctor-shani.jpg" alt="Dr. Shani J. Nair" loading="lazy">
+        </div>
+        <div class="doctor-info">
+          <h3>Dr. Shani J. Nair</h3>
+          <span class="doctor-qual">BDS, MDS</span>
+          <span class="doctor-role">Prosthodontist &amp; Implantologist</span>
+          <span class="doctor-exp">15 Years Experience</span>
+        </div>
       </div>
     </div>
   </div>
@@ -261,39 +305,64 @@
   <div class="cta-inner reveal">
     <h2>Ready to take the next step<br> toward a healthier smile?</h2>
     <div class="hero-actions">
-      <button class="btn btn-primary" data-open-modal>Book an Appointment</button>
-      <a href="tel:+918547882034" class="btn btn-outline-light">Call +91 85478 82034</a>
+      <a href="tel:+919495982034" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg>
+        Call Now
+      </a>
+      <a href="https://wa.me/919495982034?text=Hi%2C%20I%27d%20like%20to%20book%20an%20appointment%20at%20Pattath%20Dental%20Clinic." class="btn btn-outline-light" target="_blank" rel="noopener">Message on WhatsApp</a>
     </div>
   </div>
 </section>
 
-<!-- ============ CONTACT ============ -->
+<!-- ============ CONNECT WITH US ============ -->
 <section class="contact" id="contact">
   <div class="section-inner contact-grid">
     <div class="contact-card reveal">
-      <span class="section-eyebrow">Visit / Contact</span>
-      <h2>Pattath Dental Clinic</h2>
+      <span class="section-eyebrow">Get In Touch</span>
+      <h2>Connect With Us</h2>
       <p class="contact-line">Tattamangalam, Palakkad, Kerala</p>
 
       <div class="contact-detail">
-        <svg viewBox="0 0 24 24" class="icon"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg>
-        <a href="tel:+918547882034">+91 85478 82034</a>
+        <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.8-1.5c1.5.8 3.3 1.3 5.2 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.1c-1.7 0-3.3-.5-4.7-1.3l-.3-.2-3.2 1 1-3.1-.2-.3C3.7 14.7 3.2 13.4 3.2 12c0-4.8 3.9-8.8 8.8-8.8s8.8 3.9 8.8 8.8-4 8.9-8.8 8.9zm4.8-6.6c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.7.8-.8 1-.2.2-.3.2-.5.1-.3-.1-1.2-.4-2.2-1.4-.8-.7-1.4-1.6-1.5-1.9-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.4 0-.5-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1s1 2.5 1.1 2.6c.1.2 2 3 4.7 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.2-1.2-.1-.2-.3-.2-.6-.4z"/></svg>
+        <a href="https://wa.me/919495982034?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20Pattath%20Dental%20Clinic." target="_blank" rel="noopener">+91 94959 82034 (WhatsApp)</a>
       </div>
 
       <div class="contact-detail">
-        <svg viewBox="0 0 24 24" class="icon"><path d="M12 2C7.6 2 4 5.6 4 10c0 6 8 12 8 12s8-6 8-12c0-4.4-3.6-8-8-8zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+        <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg>
+        <a href="tel:+918547882034">Clinic Landline: +91 85478 82034</a>
+      </div>
+
+      <div class="contact-detail">
+        <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><path d="M12 2C7.6 2 4 5.6 4 10c0 6 8 12 8 12s8-6 8-12c0-4.4-3.6-8-8-8zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
         <span>State Highway 27, Sree Kurumbakavu – Mettupalayam Road,<br>Sreekurumba Kavu, Tattamangalam, Kerala 678102</span>
       </div>
 
-      <a href="tel:+918547882034" class="btn btn-primary contact-call-btn">Call Clinic</a>
+      <a href="https://wa.me/919495982034?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20Pattath%20Dental%20Clinic." class="btn btn-primary contact-call-btn" target="_blank" rel="noopener">Message on WhatsApp</a>
+
+      <div class="social-block">
+        <span class="social-label">Follow Us</span>
+        <div class="social-row">
+          <a class="social-link" href="https://www.instagram.com/pattath_dental_clinic?igsh=amlydjR2Yms0bTE3&igsi=amlydjR2Yms0bTE3" target="_blank" rel="noopener" aria-label="Pattath Dental Clinic on Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3.1 0 4.1.1 1.1 0 1.8.2 2.5.5.7.3 1.2.6 1.8 1.2.6.6.9 1.1 1.2 1.8.3.7.5 1.4.5 2.5.1 1 .1 1.4.1 4.1s0 3.1-.1 4.1c0 1.1-.2 1.8-.5 2.5-.3.7-.6 1.2-1.2 1.8-.6.6-1.1.9-1.8 1.2-.7.3-1.4.5-2.5.5-1 .1-1.4.1-4.1.1s-3.1 0-4.1-.1c-1.1 0-1.8-.2-2.5-.5-.7-.3-1.2-.6-1.8-1.2-.6-.6-.9-1.1-1.2-1.8-.3-.7-.5-1.4-.5-2.5C2 15.1 2 14.7 2 12s0-3.1.1-4.1c0-1.1.2-1.8.5-2.5.3-.7.6-1.2 1.2-1.8.6-.6 1.1-.9 1.8-1.2.7-.3 1.4-.5 2.5-.5C8.9 2 9.3 2 12 2zm0 1.8c-2.7 0-3 0-4 .1-.9 0-1.4.2-1.7.3-.4.2-.7.4-1 .7-.3.3-.5.6-.7 1-.1.3-.3.8-.3 1.7-.1 1-.1 1.3-.1 4s0 3 .1 4c0 .9.2 1.4.3 1.7.2.4.4.7.7 1 .3.3.6.5 1 .7.3.1.8.3 1.7.3 1 .1 1.3.1 4 .1s3 0 4-.1c.9 0 1.4-.2 1.7-.3.4-.2.7-.4 1-.7.3-.3.5-.6.7-1 .1-.3.3-.8.3-1.7.1-1 .1-1.3.1-4s0-3-.1-4c0-.9-.2-1.4-.3-1.7-.2-.4-.4-.7-.7-1-.3-.3-.6-.5-1-.7-.3-.1-.8-.3-1.7-.3-1-.1-1.3-.1-4-.1zm0 3.5a4.7 4.7 0 1 1 0 9.4 4.7 4.7 0 0 1 0-9.4zm0 1.8a2.9 2.9 0 1 0 0 5.8 2.9 2.9 0 0 0 0-5.8zm5-2a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0z"/></svg>
+          </a>
+          <a class="social-link" href="https://www.facebook.com/pattathdentalclinic" target="_blank" rel="noopener" aria-label="Pattath Dental Clinic on Facebook">
+            <svg viewBox="0 0 24 24"><path d="M13.5 21v-8.1h2.7l.4-3.2h-3.1V7.6c0-.9.3-1.5 1.6-1.5h1.7V3.1C16.5 3 15.5 3 14.4 3c-2.4 0-4 1.4-4 4.1v2.6H7.7v3.2h2.7V21h3.1z"/></svg>
+          </a>
+          <a class="social-link" href="https://www.linkedin.com/in/dr-vishnu-s-pattath-1a7b061b5?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener" aria-label="Dr. Vishnu S. Pattath on LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M6.9 8.6H3.4V21h3.5V8.6zM5.2 3.1a2 2 0 1 0 0 4.1 2 2 0 0 0 0-4.1zM20.6 21h-3.5v-6.3c0-1.5 0-3.4-2.1-3.4s-2.4 1.6-2.4 3.3V21H9.1V8.6h3.3v1.7h.1c.5-.9 1.7-1.9 3.4-1.9 3.6 0 4.3 2.4 4.3 5.5V21z"/></svg>
+          </a>
+        </div>
+      </div>
     </div>
 
     <div class="map-card reveal">
-      <div class="map-visual">
-        <svg viewBox="0 0 24 24" class="map-pin"><path d="M12 2C7.6 2 4 5.6 4 10c0 6 8 12 8 12s8-6 8-12c0-4.4-3.6-8-8-8zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
-        <span class="map-label">Tattamangalam, Palakkad</span>
-        <span class="map-sub">Map preview — live embed added on final website</span>
-      </div>
+      <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Pattath%20Dental%20Clinic%2C%20State%20Highway%2027%2C%20Sree%20Kurumbakavu%20-%20Mettupalayam%20Road%2C%20Sreekurumba%20Kavu%2C%20Tattamangalam%2C%20Kerala%20678102" target="_blank" rel="noopener" aria-label="Open Pattath Dental Clinic location in Google Maps">
+        <iframe class="map-frame" src="https://www.google.com/maps?q=Pattath%20Dental%20Clinic%2C%20State%20Highway%2027%2C%20Sree%20Kurumbakavu%20-%20Mettupalayam%20Road%2C%20Sreekurumba%20Kavu%2C%20Tattamangalam%2C%20Kerala%20678102&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Pattath Dental Clinic location map" aria-hidden="true" tabindex="-1"></iframe>
+        <span class="map-overlay">
+          <svg viewBox="0 0 24 24" class="map-pin-sm" aria-hidden="true"><path d="M12 2C7.6 2 4 5.6 4 10c0 6 8 12 8 12s8-6 8-12c0-4.4-3.6-8-8-8zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+          Open in Google Maps
+        </span>
+      </a>
     </div>
   </div>
 </section>
@@ -301,9 +370,22 @@
 <!-- ============ FOOTER ============ -->
 <footer class="footer">
   <div class="section-inner footer-grid">
-    <div class="footer-brand">
-      <span class="brand-mark">PD</span>
-      <span class="brand-text">Pattath <em>Dental Clinic</em></span>
+    <div class="footer-brand-col">
+      <div class="footer-brand">
+        <img src="assets/logo-icon.png" alt="Pattath Dental Clinic logo" class="brand-mark">
+        <span class="brand-text">Pattath <em>Dental Clinic</em></span>
+      </div>
+      <div class="social-row footer-social">
+        <a class="social-link" href="https://www.instagram.com/pattath_dental_clinic?igsh=amlydjR2Yms0bTE3&igsi=amlydjR2Yms0bTE3" target="_blank" rel="noopener" aria-label="Pattath Dental Clinic on Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3.1 0 4.1.1 1.1 0 1.8.2 2.5.5.7.3 1.2.6 1.8 1.2.6.6.9 1.1 1.2 1.8.3.7.5 1.4.5 2.5.1 1 .1 1.4.1 4.1s0 3.1-.1 4.1c0 1.1-.2 1.8-.5 2.5-.3.7-.6 1.2-1.2 1.8-.6.6-1.1.9-1.8 1.2-.7.3-1.4.5-2.5.5-1 .1-1.4.1-4.1.1s-3.1 0-4.1-.1c-1.1 0-1.8-.2-2.5-.5-.7-.3-1.2-.6-1.8-1.2-.6-.6-.9-1.1-1.2-1.8-.3-.7-.5-1.4-.5-2.5C2 15.1 2 14.7 2 12s0-3.1.1-4.1c0-1.1.2-1.8.5-2.5.3-.7.6-1.2 1.2-1.8.6-.6 1.1-.9 1.8-1.2.7-.3 1.4-.5 2.5-.5C8.9 2 9.3 2 12 2zm0 1.8c-2.7 0-3 0-4 .1-.9 0-1.4.2-1.7.3-.4.2-.7.4-1 .7-.3.3-.5.6-.7 1-.1.3-.3.8-.3 1.7-.1 1-.1 1.3-.1 4s0 3 .1 4c0 .9.2 1.4.3 1.7.2.4.4.7.7 1 .3.3.6.5 1 .7.3.1.8.3 1.7.3 1 .1 1.3.1 4 .1s3 0 4-.1c.9 0 1.4-.2 1.7-.3.4-.2.7-.4 1-.7.3-.3.5-.6.7-1 .1-.3.3-.8.3-1.7.1-1 .1-1.3.1-4s0-3-.1-4c0-.9-.2-1.4-.3-1.7-.2-.4-.4-.7-.7-1-.3-.3-.6-.5-1-.7-.3-.1-.8-.3-1.7-.3-1-.1-1.3-.1-4-.1zm0 3.5a4.7 4.7 0 1 1 0 9.4 4.7 4.7 0 0 1 0-9.4zm0 1.8a2.9 2.9 0 1 0 0 5.8 2.9 2.9 0 0 0 0-5.8zm5-2a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0z"/></svg>
+        </a>
+        <a class="social-link" href="https://www.facebook.com/pattathdentalclinic" target="_blank" rel="noopener" aria-label="Pattath Dental Clinic on Facebook">
+          <svg viewBox="0 0 24 24"><path d="M13.5 21v-8.1h2.7l.4-3.2h-3.1V7.6c0-.9.3-1.5 1.6-1.5h1.7V3.1C16.5 3 15.5 3 14.4 3c-2.4 0-4 1.4-4 4.1v2.6H7.7v3.2h2.7V21h3.1z"/></svg>
+        </a>
+        <a class="social-link" href="https://www.linkedin.com/in/dr-vishnu-s-pattath-1a7b061b5?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener" aria-label="Dr. Vishnu S. Pattath on LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M6.9 8.6H3.4V21h3.5V8.6zM5.2 3.1a2 2 0 1 0 0 4.1 2 2 0 0 0 0-4.1zM20.6 21h-3.5v-6.3c0-1.5 0-3.4-2.1-3.4s-2.4 1.6-2.4 3.3V21H9.1V8.6h3.3v1.7h.1c.5-.9 1.7-1.9 3.4-1.9 3.6 0 4.3 2.4 4.3 5.5V21z"/></svg>
+        </a>
+      </div>
     </div>
 
     <div class="footer-col">
@@ -311,13 +393,13 @@
       <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#treatments">Treatments</a>
-      <a href="#doctor">Doctor</a>
-      <a href="#contact">Contact</a>
+      <a href="#doctor">Doctors</a>
+      <a href="#contact">Connect</a>
     </div>
 
     <div class="footer-col">
-      <h4>Phone</h4>
-      <a href="tel:+918547882034">+91 85478 82034</a>
+      <h4>WhatsApp</h4>
+      <a href="https://wa.me/919495982034" target="_blank" rel="noopener">+91 94959 82034</a>
       <h4 class="footer-loc-head">Location</h4>
       <span>Tattamangalam, Palakkad, Kerala</span>
     </div>
@@ -327,58 +409,6 @@
     <span class="footer-credit">Website concept designed by <strong>Webora</strong></span>
   </div>
 </footer>
-
-<!-- ============ MODAL ============ -->
-<div class="modal-overlay" id="modalOverlay">
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
-
-    <div class="modal-form-wrap" id="modalFormWrap">
-      <h3 id="modalTitle">Book an Appointment</h3>
-      <p class="modal-sub">Tell us a little about what you need — we'll take it from there.</p>
-      <form id="apptForm">
-        <div class="form-row">
-          <label for="fName">Name</label>
-          <input type="text" id="fName" required placeholder="Your full name">
-        </div>
-        <div class="form-row">
-          <label for="fPhone">Phone</label>
-          <input type="tel" id="fPhone" required placeholder="Your phone number">
-        </div>
-        <div class="form-row two-col">
-          <div>
-            <label for="fDate">Preferred Date</label>
-            <input type="date" id="fDate">
-          </div>
-          <div>
-            <label for="fTreatment">Treatment</label>
-            <select id="fTreatment">
-              <option>General Consultation</option>
-              <option>Dental Implants</option>
-              <option>Braces / Orthodontics</option>
-              <option>Root Canal Treatment</option>
-              <option>Cosmetic Dentistry</option>
-              <option>Laser Dentistry</option>
-              <option>Dentures / Prosthodontics</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-row">
-          <label for="fMessage">Message</label>
-          <textarea id="fMessage" rows="3" placeholder="Anything you'd like us to know (optional)"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary form-submit">Submit Request</button>
-      </form>
-    </div>
-
-    <div class="modal-success" id="modalSuccess">
-      <svg viewBox="0 0 24 24" class="success-icon"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 20.6 7.4 19.2 6z"/></svg>
-      <h3>Request Received (Demo)</h3>
-      <p>Demo appointment request — backend integration can be added in the final website.</p>
-      <button class="btn btn-outline" id="modalDone">Close</button>
-    </div>
-  </div>
-</div>
 
 <script src="script.js"></script>
 </body>

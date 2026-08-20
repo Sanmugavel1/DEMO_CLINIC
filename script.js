@@ -1,5 +1,55 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  /* ---------- Launch screen ---------- */
+  const launchScreen = document.getElementById('launchScreen');
+  const launchQuote = document.getElementById('launchQuote');
+  const launchSkip = document.getElementById('launchSkip');
+
+  const quotes = [
+    "A confident smile opens more doors than words ever could.",
+    "Behind every great smile is a little care, and a lot of trust.",
+    "We don't just treat teeth — we help you smile without hesitation.",
+    "Good dental care is quiet, consistent, and life-changing.",
+    "Your smile deserves the same care as the rest of your health.",
+    "A healthy smile is always in style."
+  ];
+
+  if (launchScreen && !launchScreen.classList.contains('skip')) {
+    let qIndex = 0;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const dismissLaunch = () => {
+      clearInterval(quoteTimer);
+      clearTimeout(autoDismissTimer);
+      launchScreen.classList.add('leaving');
+      document.documentElement.classList.remove('launch-lock');
+      sessionStorage.setItem('pattathLaunchSeen', '1');
+      setTimeout(() => launchScreen.remove(), 700);
+    };
+
+    const cycleQuote = () => {
+      qIndex = (qIndex + 1) % quotes.length;
+      launchQuote.classList.add('fade-out');
+      setTimeout(() => {
+        launchQuote.textContent = quotes[qIndex];
+        launchQuote.classList.remove('fade-out');
+      }, 400);
+    };
+
+    const quoteTimer = reduceMotion ? null : setInterval(cycleQuote, 2600);
+    const autoDismissTimer = setTimeout(dismissLaunch, reduceMotion ? 1200 : 7200);
+
+    launchSkip.addEventListener('click', dismissLaunch);
+    launchScreen.addEventListener('click', (e) => {
+      if (e.target === launchScreen) dismissLaunch();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') dismissLaunch();
+    }, { once: true });
+  } else if (launchScreen) {
+    launchScreen.remove();
+  }
+
   /* ---------- Navbar scroll state ---------- */
   const navbar = document.getElementById('navbar');
   const onScroll = () => {
@@ -53,54 +103,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   revealEls.forEach(el => observer.observe(el));
 
-  /* ---------- Appointment modal ---------- */
-  const overlay = document.getElementById('modalOverlay');
-  const openTriggers = document.querySelectorAll('[data-open-modal]');
-  const closeBtn = document.getElementById('modalClose');
-  const doneBtn = document.getElementById('modalDone');
-  const formWrap = document.getElementById('modalFormWrap');
-  const successWrap = document.getElementById('modalSuccess');
-  const apptForm = document.getElementById('apptForm');
-
-  const openModal = () => {
-    overlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  };
-
-  const resetModal = () => {
-    formWrap.style.display = '';
-    successWrap.classList.remove('show');
-    apptForm.reset();
-  };
-
-  const closeModal = () => {
-    overlay.classList.remove('open');
-    document.body.style.overflow = '';
-    setTimeout(resetModal, 300);
-  };
-
-  openTriggers.forEach(btn => btn.addEventListener('click', openModal));
-  closeBtn.addEventListener('click', closeModal);
-  doneBtn.addEventListener('click', closeModal);
-
-  overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) closeModal();
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
-  });
-
-  apptForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    formWrap.style.display = 'none';
-    successWrap.classList.add('show');
-  });
-
   /* ---------- Graceful image fallback ---------- */
   document.querySelectorAll('img').forEach(img => {
     img.addEventListener('error', () => {
-      img.closest('.hero-image-frame, .about-image-frame')?.style.setProperty(
+      img.closest('.hero-image-frame, .about-image-frame, .doctor-photo')?.style.setProperty(
         'background', 'linear-gradient(150deg, var(--navy), var(--navy-deep))'
       );
       img.style.display = 'none';
