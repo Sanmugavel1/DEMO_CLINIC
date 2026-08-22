@@ -103,6 +103,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
   revealEls.forEach(el => observer.observe(el));
 
+  /* ---------- Count-up on years of experience ---------- */
+  const countEls = document.querySelectorAll('.exp-num');
+  const reduceMotionCount = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const animateCount = (el) => {
+    const target = parseInt(el.dataset.count, 10) || 0;
+    if (reduceMotionCount) { el.textContent = target; return; }
+    const duration = 1100;
+    const start = performance.now();
+    const tick = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(eased * target);
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+
+  if (countEls.length) {
+    const countObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCount(entry.target);
+          countObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    countEls.forEach(el => countObserver.observe(el));
+  }
+
   /* ---------- Graceful image fallback ---------- */
   document.querySelectorAll('img').forEach(img => {
     img.addEventListener('error', () => {
