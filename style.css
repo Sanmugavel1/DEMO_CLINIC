@@ -75,23 +75,6 @@ button{ font-family: inherit; cursor: pointer; }
 .section-head{ max-width: 620px; margin-bottom: 56px; }
 .section-head h2{ font-size: clamp(1.7rem, 3vw, 2.4rem); }
 
-/* ---------- Concept tag ---------- */
-.concept-tag{
-  position: fixed;
-  bottom: 18px;
-  left: 18px;
-  z-index: 500;
-  background: rgba(11,42,87,.9);
-  color: #fff;
-  font-size: .7rem;
-  letter-spacing: .05em;
-  padding: 7px 13px;
-  border-radius: 999px;
-  backdrop-filter: blur(6px);
-  pointer-events: none;
-  font-weight: 600;
-}
-
 /* ---------- Buttons ---------- */
 .btn{
   display: inline-flex;
@@ -793,7 +776,6 @@ html.launch-lock, html.launch-lock body{ overflow: hidden; height: 100%; }
   .contact-card{ padding: 32px; }
   .two-col{ grid-template-columns: 1fr; }
   .footer-bottom{ flex-direction: column; text-align: center; }
-  .concept-tag{ bottom: 12px; left: 12px; font-size: .62rem; padding: 6px 10px; }
 }
 
 @media (prefers-reduced-motion: reduce){
