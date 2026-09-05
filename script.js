@@ -90,6 +90,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* ---------- Service category accordion ---------- */
+  document.querySelectorAll('.service-cat').forEach(cat => {
+    const head = cat.querySelector('.service-cat-head');
+    head.addEventListener('click', () => {
+      const isOpen = cat.classList.toggle('open');
+      head.setAttribute('aria-expanded', String(isOpen));
+    });
+  });
+
   /* ---------- Scroll reveal ---------- */
   const revealEls = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
@@ -132,6 +141,38 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.4 });
     countEls.forEach(el => countObserver.observe(el));
   }
+
+  /* ---------- Gallery lightbox ---------- */
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxClose = document.getElementById('lightboxClose');
+
+  const openLightbox = (src, alt) => {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || '';
+    lightbox.classList.add('open');
+    document.documentElement.classList.add('launch-lock');
+  };
+  const closeLightbox = () => {
+    lightbox.classList.remove('open');
+    document.documentElement.classList.remove('launch-lock');
+    setTimeout(() => { lightboxImg.src = ''; }, 300);
+  };
+
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const img = item.querySelector('img');
+      openLightbox(item.dataset.full || img.src, img.alt);
+    });
+  });
+
+  lightboxClose?.addEventListener('click', closeLightbox);
+  lightbox?.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox?.classList.contains('open')) closeLightbox();
+  });
 
   /* ---------- Graceful image fallback ---------- */
   document.querySelectorAll('img').forEach(img => {
